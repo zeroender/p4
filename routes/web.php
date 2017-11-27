@@ -15,6 +15,48 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+/**
+* Task
+*/
+# Create a task
+Route::get('/task/create', 'TaskController@create');
+Route::post('/task', 'TaskController@store');
+
+# Edit a task
+Route::get('/task/{id}/edit', 'TaskController@edit');
+Route::put('/task/{id}', 'TaskController@update');
+
+# View all tasks
+Route::get('/task', 'TaskController@index');
+
+# View a task
+Route::get('/task/{id}', 'TaskController@show');
+
+# Delete a task
+Route::get('/task/{id}/delete', 'TaskController@confirmDelete');
+Route::delete('/task/{id}', 'TaskController@delete');
+
+/**
+* Category
+*/
+# Create a category
+Route::get('/category/create', 'CategoryController@create');
+Route::post('/category', 'CategoryController@store');
+
+# Edit a category
+Route::get('/category/{id}/edit', 'CategoryController@edit');
+Route::put('/category/{id}', 'CategoryController@update');
+
+# View all categories
+Route::get('/category', 'CategoryController@index');
+
+# View a category
+Route::get('/category/{id}', 'CategoryController@show');
+
+# Delete a category
+Route::get('/category/{id}/delete', 'CategoryController@delete');
+Route::delete('/category/{id}', 'CategoryController@destroy');
+
 Route::get('/debug', function () {
 
     $debug = [
