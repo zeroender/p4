@@ -39,14 +39,10 @@
             @include('modules.error-field', ['fieldName' => 'status'])
         </div>
 
-
         <div class="form-group">
             <div class='input-group date' id='datetimepicker1'>
                 <label class="col-form-label" for='due_date'>Due Date</label>
                 <input type='text' class="form-control" name='due_date' id='due_date' value='{{ old('due_date', $task->due_date) }}'>
-                <span class="input-group-addon">
-                    <span class="glyphicon glyphicon-calendar"></span>
-                </span>
                 @include('modules.error-field', ['fieldName' => 'due_date'])
             </div>
         </div>
@@ -67,3 +63,7 @@
     </form>
 
 @endsection
+
+@push('body')
+    <script>$( "#due_date" ).datepicker({ dateFormat: 'yy-mm-dd' });</script>
+@endpush

@@ -10,6 +10,7 @@
     <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css' rel='stylesheet'>
     <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
     <link href="/css/p4.css" type='text/css' rel='stylesheet'>
+    <link rel="stylesheet" href="/jquery-ui-1.12.1.custom/jquery-ui.min.css">
 
     @stack('head')
 
@@ -47,8 +48,12 @@
         @yield('footer')
     </footer>
 
+    {{-- src for Jquery --}}
     <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 
+    {{-- src (local) for jquery-ui --}}
+    <script src="/jquery-ui-1.12.1.custom/external/jquery/jquery.js"></script>
+    <script src="/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
     @stack('body')
 
 </body>
