@@ -22,7 +22,7 @@
 
         <div class="form-group">
             <label class="col-form-label" for='description'>* Description</label>
-            <input type='text' class="form-control" name='description' id='description' value='{{ old('description', 'Drive to stop and shop, pick up eggs, milk, and bread') }}'>
+            <input type='text' class="form-control" name='description' id='description' value='{{ old('description') }}'>
             @include('modules.error-field', ['fieldName' => 'description'])
         </div>
 
@@ -32,7 +32,6 @@
                 <option>not started</option>
                 <option>in progress</option>
                 <option>completed</option>
-                <option>blocked</option>
             </select>
             @include('modules.error-field', ['fieldName' => 'status'])
         </div>
@@ -46,11 +45,7 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <label class="col-form-label" for='list_id'>Category</label>
-            <input type='text' class="form-control" name='list_id' id='list_id' value='{{ old('list_id') }}'>
-            @include('modules.error-field', ['fieldName' => 'list_id'])
-        </div>
+        @include('task.categoriesForCheckboxes')
 
         <input type='submit' value='Add task' class='btn btn-primary btn-small'>
     </form>

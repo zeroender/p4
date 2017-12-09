@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Task;
+use App\Category;
 
 class TaskController extends Controller
 {
@@ -28,7 +29,11 @@ class TaskController extends Controller
      */
     public function create()
     {
-        return view('task.create');
+        $categoriesForCheckboxes = Category::getForCheckboxes();
+
+        return view('task.create')->with([
+            'categoriesForCheckboxes' => $categoriesForCheckboxes
+        ]);
     }
 
     /**
@@ -53,6 +58,7 @@ class TaskController extends Controller
         $task->status = $request->input('status');
         $task->save();
 
+        $task->categories()->sync($request->input('categories'));
         //TODO make sure save did not throw an error!
 
         //If no error:
@@ -90,7 +96,18 @@ class TaskController extends Controller
             return redirect('/task')->with('alert', 'Task not found');
         }
 
-        return view('task.edit')->with(['task' => $task]);
+        $categoriesForCheckboxes = Category::getForCheckboxes();
+
+        $categoriesForThisTask = [];
+        foreach ($task->categories as $category) {
+            $categoriesForThisTask[] = $category->name;
+        }
+
+        return view('task.edit')->with([
+            'task' => $task,
+            'categoriesForCheckboxes' => $categoriesForCheckboxes,
+            'categoriesForThisTask' => $categoriesForThisTask
+        ]);
     }
 
     /**
@@ -109,6 +126,9 @@ class TaskController extends Controller
         ]);
 
         $task = Task::find($id);
+
+        $task->categories()->sync($request->input('categories'));
+
         $task->name = $request->input('name');
         $task->description = $request->input('description');
         $task->due_date = $request->input('due_date', null);//or null
@@ -150,10 +170,10 @@ class TaskController extends Controller
     {
         $task = Task::find($id);
 
-        $name = $task['name'];
+        $task->categories()->detach();
 
         $task->delete();
 
-        return redirect('/task')->with('alert', 'The task '.$name.' has been deleted');
+        return redirect('/task')->with('alert', 'The task '.$task->name.' has been deleted');
     }
 }

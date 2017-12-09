@@ -34,7 +34,6 @@
                 <option value='not started' {{ (old('status') == 'not started' || ($task->status == 'not started' && old('status')==null)) ? 'selected' : ''}}>not started</option>
                 <option value='in progress' {{ (old('status') == 'in progress' || ($task->status == 'in progress' && old('status')==null)) ? 'selected' : ''}}>in progress</option>
                 <option value='completed' {{ (old('status') == 'completed' || ($task->status == 'completed' && old('status')==null)) ? 'selected' : ''}}>completed</option>
-                <option value='blocked' {{ (old('status') == 'blocked' || ($task->status == 'blocked' && old('status')==null)) ? 'selected' : ''}}>blocked</option>
             </select>
             @include('modules.error-field', ['fieldName' => 'status'])
         </div>
@@ -47,11 +46,7 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <label class="col-form-label" for='list_id'>Category</label>
-            <input type='text' class="form-control" name='list_id' id='list_id' value='{{ old('list_id', $task->list_id) }}'>
-            @include('modules.error-field', ['fieldName' => 'list_id'])
-        </div>
+        @include('task.categoriesForCheckboxes')
 
         <input type='submit' value='Update task' class='btn btn-primary btn-small'>
     </form>
