@@ -48,12 +48,6 @@
         </div>
 
         <div class="form-group">
-            <label class="col-form-label" for='dependent_task_id'>Blocks</label>
-            <input type='text' class="form-control" name='dependent_task_id' id='dependent_task_id' value='{{ old('dependent_task_id', $task->dependent_task_id) }}'>
-            @include('modules.error-field', ['fieldName' => 'dependent_task_id'])
-        </div>
-
-        <div class="form-group">
             <label class="col-form-label" for='list_id'>Category</label>
             <input type='text' class="form-control" name='list_id' id='list_id' value='{{ old('list_id', $task->list_id) }}'>
             @include('modules.error-field', ['fieldName' => 'list_id'])

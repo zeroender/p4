@@ -13,9 +13,9 @@ class TasksTableSeeder extends Seeder
     public function run()
     {
         $tasks = [
-            ['Buy clothes', 'Get some clothing', 0, null, 'not started'],
-            ['Clean bathrooms', 'Scrub toilets, clean sink, rinse out tub', 1, 2, 'in progress'],
-            ['Get turkey', 'Find a turkey that can feed 20 people and order', 2, null, 'completed'],
+            ['Buy clothes', 'Get some clothing', 'not started'],
+            ['Clean bathrooms', 'Scrub toilets, clean sink, rinse out tub', 'in progress'],
+            ['Get turkey', 'Find a turkey that can feed 20 people and order', 'completed'],
         ];
 
         $count = count($tasks);
@@ -27,9 +27,7 @@ class TasksTableSeeder extends Seeder
                 'name' => $task[0],
                 'description' => $task[1],
                 'due_date' => Carbon\Carbon::now()->subDays($count * 10)->toDateTimeString(),
-                'list_id' => $task[2],
-                'dependent_task_id' => $task[3],
-                'status' => $task[4]
+                'status' => $task[2]
             ]);
             $count--;
         }

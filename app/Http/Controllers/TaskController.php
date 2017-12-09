@@ -49,8 +49,7 @@ class TaskController extends Controller
         $task->name = $request->input('name');
         $task->description = $request->input('description');
         $task->due_date = $request->input('due_date', null);//or null
-        $task->dependent_task_id = $request->input('dependent_task_id', null);//or null
-        $task->list_id = $request->input('list_id');//or null
+        //$task->list_id = $request->input('list_id');//or null
         $task->status = $request->input('status');
         $task->save();
 
@@ -113,8 +112,7 @@ class TaskController extends Controller
         $task->name = $request->input('name');
         $task->description = $request->input('description');
         $task->due_date = $request->input('due_date', null);//or null
-        $task->dependent_task_id = $request->input('dependent_task_id', null);//or null
-        $task->list_id = $request->input('list_id');//or null
+        //$task->list_id = $request->input('list_id');//or null
         $task->status = $request->input('status');
         $task->save();
 
@@ -141,7 +139,7 @@ class TaskController extends Controller
 
         return view('task.delete')->with(['task' => $task]);
     }
-    
+
     /**
      * Remove the specified resource from storage.
      *

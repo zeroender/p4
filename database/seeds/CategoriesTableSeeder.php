@@ -13,9 +13,11 @@ class CategoriesTableSeeder extends Seeder
     public function run()
     {
         $categories = [
-            ['Default', 'The Default category'],
+            ['Pet', 'Tasks related to a pet'],
             ['Household Chores', 'A list of household tasks'],
-            ['Holiday Shopping List', 'Stuff to buy for hosting thanksgiving and christmas shopping']
+            ['Holiday Preperation', 'Things related to the holidays'],
+            ['Food Shopping', 'Tasks to get food'],
+            ['Work Related', 'Tasks related to work']
         ];
 
         $count = count($categories);

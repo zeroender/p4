@@ -18,8 +18,7 @@ class CreateTasksTable extends Migration
             $table->string('name');
             $table->longText('description');
             $table->date('due_date')->nullable();
-            $table->integer('list_id');
-            $table->integer('dependent_task_id')->nullable();
+            //$table->integer('list_id');
             $table->enum('status', ['not started', 'in progress', 'completed', 'blocked']);
             $table->timestamps();
         });
