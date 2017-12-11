@@ -6,7 +6,7 @@
 
 @section('content')
 
-    <h1>Add a category</h1>
+    <h3>Add a category</h3>
 
     <form method='POST' action='/category'>
 
@@ -26,7 +26,10 @@
             @include('modules.error-field', ['fieldName' => 'description'])
         </div>
 
-        <input type='submit' value='Add category' class='btn btn-primary btn-small'>
+        <div class="form-group clear">
+            <input type='submit' value='Add category' class='btn btn-primary btn-small'>
+        </div>
+
     </form>
 
 @endsection

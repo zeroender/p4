@@ -39,16 +39,24 @@
         </div>
 
         <div class="form-group">
-            <div class='input-group date' id='datetimepicker1'>
-                <label class="col-form-label" for='due_date'>Due Date</label>
-                <input type='text' class="form-control" name='due_date' id='due_date' value='{{ old('due_date', $task->due_date) }}'>
-                @include('modules.error-field', ['fieldName' => 'due_date'])
-            </div>
+            <label class="col-form-label" for='due_date'>Due Date</label>
+            <input type='text' class="form-control" name='due_date' id='due_date' value='{{ old('due_date', $task->due_date) }}'>
+            @include('modules.error-field', ['fieldName' => 'due_date'])
         </div>
 
-        @include('task.categoriesForCheckboxes')
+        <div class="form-group">
+            <label class="col-form-label" for='categories'>Categories</label>
+            @include('task.categoriesForCheckboxes')
+        </div>
 
-        <input type='submit' value='Update task' class='btn btn-primary btn-small'>
+        <div class="form-group clear">
+            <input type='submit' value='Update Task' class='btn btn-primary btn-small'>
+        </div>
+
+        <div class="form-group clear">
+            <a class='btn btn-primary btn-small' href='/task/{{ $task['id'] }}/'>View Task</a>
+            <a class='btn btn-primary btn-small' href='/task/{{ $task['id'] }}/delete'>Delete Task</a>
+        </div>
     </form>
 
 @endsection

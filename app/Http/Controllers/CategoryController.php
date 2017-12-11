@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
+use App\Task;
 
 class CategoryController extends Controller
 {
@@ -18,6 +19,20 @@ class CategoryController extends Controller
 
         return view('category.index')->with([
             'categories' => $categories
+        ]);
+    }
+
+    /**
+     * Display all categories to allow user to display tasks for a category
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showTasksForCategory($id)
+    {
+        $category = Category::where('id', '=', $id)->first();
+
+        return view('task.index')->with([
+            'tasks' => $category->tasks
         ]);
     }
 
@@ -143,8 +158,10 @@ class CategoryController extends Controller
 
         $name = $category['name'];
 
+        $category->tasks()->detach();
+
         $category->delete();
 
-        return redirect('/category')->with('alert', 'The category '.$name.' has been deleted');
+        return redirect('/category')->with('alert', 'The category '.$category['name'].' has been deleted');
     }
 }

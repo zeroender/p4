@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @push('head')
-    <link href='/css/book/show.css' rel='stylesheet'>
+
 @endpush
 
 @section('title')
@@ -10,12 +10,38 @@
 
 @section('content')
 
-    <h2>{{ $task['title'] }}</h2>
+    <h1>View Task {{ $task->title }} </h1>
 
-    <p>Task Description {{ $task['description'] }}</p>
-    <p>Task due {{ $task['due_date'] }}</p>
+    <div class='clear'></div>
 
-    <p><a href='/task/{{ $task['id'] }}/edit'>Edit</a></p>
-    <p><a href='/task/{{ $task['id'] }}/delete'>Delete</a></p>
+    <div class="form-group">
+        <label class="col-form-label" for='name'>Task Name</label>
+        <input type='text' class="form-control" disabled='true' value='{{ $task['name'] }}'>
+    </div>
+
+    <div class="form-group">
+        <label class="col-form-label" for='name'>Description</label>
+        <input type='text' class="form-control" disabled='true' value='{{ $task['description'] }}'>
+    </div>
+
+    <div class="form-group">
+        <label class="col-form-label" for='name'>Status</label>
+        <input type='text' class="form-control" disabled='true' value='{{ $task['status'] }}'>
+    </div>
+
+    <div class="form-group">
+        <label class="col-form-label" for='name'>Due Date</label>
+        <input type='text' class="form-control" disabled='true' value='{{ $task['due_date'] }}'>
+    </div>
+
+    <div class="form-group">
+        <label class="col-form-label" for='categories'>Categories</label>
+        @include('task.categoriesForCheckboxesDisplay')
+    </div>
+
+    <div class="form-group clear">
+        <a class='btn btn-primary btn-small' href='/task/{{ $task['id'] }}/edit'>Edit Task</a>
+        <a class='btn btn-primary btn-small' href='/task/{{ $task['id'] }}/delete'>Delete Task</a>
+    </div>
 
 @endsection

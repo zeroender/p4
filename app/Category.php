@@ -23,4 +23,13 @@ class Category extends Model
 
         return $categoriesForCheckboxes;
     }
+
+    public static function getTasksForCategory($id)
+    {
+        $category = Category::where('id', '=', $id);
+
+        foreach ($category->tasks as $task) {
+            dump($task->name);
+        }
+    }
 }

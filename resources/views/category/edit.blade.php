@@ -6,7 +6,7 @@
 
 @section('content')
 
-    <h1>Edit Category {{ $category->title }} </h1>
+    <h3>Editing Category "{{ $category['name'] }}" </h3>
 
     <form method='POST' action='/category/{{ $category->id }}'>
 
@@ -28,7 +28,15 @@
             @include('modules.error-field', ['fieldName' => 'description'])
         </div>
 
-        <input type='submit' value='Update category' class='btn btn-primary btn-small'>
+        <div class="form-group clear">
+            <input type='submit' value='Update category' class='btn btn-primary btn-small'>
+        </div>
+
+        <div class="form-group clear">
+            <a class='btn btn-primary btn-small' href='/category/{{ $category['id'] }}/'>View Category</a>
+            <a class='btn btn-primary btn-small' href='/category/{{ $category['id'] }}/delete'>Delete Category</a>
+        </div>
+
     </form>
 
 @endsection

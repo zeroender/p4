@@ -6,9 +6,9 @@
 
 @section('content')
 
-    <h1>Delete Task</h1>
+    <h3>Delete Task</h3>
 
-    <p>Do you wish to delete "{{ $task->name }}"?</p>
+    <h5>Do you really want to delete "{{ $task->name }}"?</h5>
 
     <form method='POST' action='/task/{{ $task->id }}'>
 
@@ -16,7 +16,13 @@
 
         {{ csrf_field() }}
 
-        <input type='submit' value='Yes, Delete this task' class='btn btn-primary btn-small'>
+        <div class="form-group clear">
+            <input type='submit' value='Yes, Delete this task' class='btn btn-primary btn-small'>
+        </div>
     </form>
 
+    <div class="form-group clear">
+        <a class='btn btn-primary btn-small' href='/task/{{ $task['id'] }}/'>View Task</a>
+        <a class='btn btn-primary btn-small' href='/task/{{ $task['id'] }}/edit'>Edit Task</a>
+    </div>
 @endsection

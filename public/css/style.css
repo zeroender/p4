@@ -1,0 +1,187 @@
+/* box sizing: http://www.paulirish.com/2012/box-sizing-border-box-ftw */
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html {
+    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+
+    /* sticky footer */
+    position: relative;
+    min-height: 100%;
+
+}
+
+section#main {
+    width:90%;
+    margin:auto;
+    padding-bottom:20px;
+    padding-top:20px;
+    text-align:center;
+
+}
+
+body {
+    /* Default font-size */
+    font-size:16px;
+
+    /* sticky footer - match footer height */
+    margin-bottom: 50px;
+}
+
+.alert {
+    background-color:yellow;
+    width:100%;
+    padding:5px;
+    text-align:center;
+    text: bold;
+    cursor:pointer;
+    top:0;
+    left:0;
+    position:absolute;
+    z-index:1000;
+}
+
+header {
+    text-align:center;
+    background-color:#eee;
+    color: #f8f9fa;
+    
+}
+
+
+footer {
+    text-align:center;
+    background-color:#eee;
+
+    /* sticky footer */
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height:50px;
+    line-height:50px; /* Vertically center the text there */
+}
+
+
+/*----------------------------------------------------
+Nav bar
+-----------------------------------------------------*/
+nav {
+    border-top:1px solid #eee;
+    border-bottom:1px solid #eee;
+    padding:5px;
+}
+
+nav ul {
+    margin:0;
+    padding:0;
+    list-style-type:none;
+}
+
+nav ul li {
+    display:inline-block;
+    padding:10px;
+}
+
+nav ul li a:link {
+    text-decoration:none;
+    font-weight:bold;
+    text-transform:uppercase;
+}
+
+nav ul li a:hover {
+    color:#18bc9c; /* flatly teel */
+}
+
+a.active:link, a.active:visited, a.active:active, a.active:hover {
+    color:#18bc9c;
+}
+
+
+/*----------------------------------------------------
+Forms
+-----------------------------------------------------*/
+
+input[type=text], input[type=email], input[type=password], textarea, select {
+    clear:both;
+    display:block;
+    width:100%;
+    font-size:1.2rem;
+    padding:3px;
+    font-family:Consolas, Courier, monospace;
+
+}
+
+.form-group {
+    clear:both;
+    display:block;
+    width:75%;
+    margin: 0 auto;
+}
+
+.clear {
+    clear:both;
+    display:block;
+    padding-top:15px;
+}
+
+input[type='checkbox'] {
+    display:inline;
+}
+
+input[type='checkbox'] + label {
+    display:block;
+}
+
+label {
+    margin-top:20px;
+    display:block;
+    font-size:12px;
+    font-size:1.2rem;
+    letter-spacing:.75px;
+    font-weight:bold;
+    text-transform:uppercase;
+    text-align:center;
+    margin: 0 auto;
+}
+
+.error {
+    list-style-type:none;
+    color:#a94442; /* reddish */
+    text-align:left;
+    margin:0;
+    padding:0;
+    font-size:1.2rem;
+    font-size:12px;
+    font-style:italic;
+}
+
+.success {
+    color:#3c763d; /* greenish */
+}
+
+.details {
+    font-size:1.1rem;
+    font-size:11px;
+    font-style:italic;
+}
+
+/*----------------------------------------------------
+Misc
+-----------------------------------------------------*/
+/* Clear Fix: http://nicolasgallagher.com/micro-clearfix-hack/ */
+.cf:before,
+.cf:after {
+    content: " ";
+    /* 1 */
+    display: table;
+    /* 2 */
+}
+.cf:after {
+    clear: both;
+}
+.cf {
+    *zoom: 1;
+}

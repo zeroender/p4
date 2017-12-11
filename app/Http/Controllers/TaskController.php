@@ -23,6 +23,23 @@ class TaskController extends Controller
     }
 
     /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function indexBy($value)
+    {
+        $tasks = Task::orderBy($value)->get();
+
+        $value = ' ordered by '.$value;
+
+        return view('task.index')->with([
+            'tasks' => $tasks,
+            'sortBy' => $value
+        ]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
@@ -79,7 +96,18 @@ class TaskController extends Controller
             return redirect('/task')->with('alert', 'Task not found');
         }
 
-        return view('task.show')->with(['task' => $task]);
+        $categoriesForCheckboxes = Category::getForCheckboxes();
+
+        $categoriesForThisTask = [];
+        foreach ($task->categories as $category) {
+            $categoriesForThisTask[] = $category->name;
+        }
+
+        return view('task.show')->with([
+          'task' => $task,
+          'categoriesForCheckboxes' => $categoriesForCheckboxes,
+          'categoriesForThisTask' => $categoriesForThisTask
+        ]);
     }
 
     /**

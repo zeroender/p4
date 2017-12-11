@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @push('head')
-    <link href='/css/book/show.css' rel='stylesheet'>
+
 @endpush
 
 @section('title')
@@ -10,11 +10,24 @@
 
 @section('content')
 
-    <h2>{{ $category['name'] }}</h2>
+    <h3>Viewing Category "{{ $category['name'] }}" </h3>
 
-    <p>{{ $category['description'] }}</p>
+    <div class='clear'></div>
 
-    <p><a href='/category/{{ $category['id'] }}/edit'>Edit</a></p>
-    <p><a href='/category/{{ $category['id'] }}/delete'>Delete</a></p>
+    <div class="form-group">
+        <label class="col-form-label" for='name'>Category Name</label>
+        <input type='text' disabled='true' class="form-control" name='name' id='name' value='{{ $category['name'] }}'>
+    </div>
+
+    <div class="form-group">
+        <label class="col-form-label" for='description'>Description</label>
+        <input type='text' disabled='true' class="form-control" name='description' id='description' value='{{ $category['description'] }}'>
+        @include('modules.error-field', ['fieldName' => 'description'])
+    </div>
+
+    <div class="form-group clear">
+        <a class='btn btn-primary btn-small' href='/category/{{ $category['id'] }}/edit'>Edit Category</a>
+        <a class='btn btn-primary btn-small' href='/category/{{ $category['id'] }}/delete'>Delete Category</a>
+    </div>
 
 @endsection

@@ -36,18 +36,21 @@
             @include('modules.error-field', ['fieldName' => 'status'])
         </div>
 
-
         <div class="form-group">
-            <div class='input-group date' id='datetimepicker1'>
-                <label class="col-form-label" for='due_date'>Due Date</label>
-                <input type='text' class="form-control" name='due_date' id='due_date' value='{{ old('due_date')}}'>
-                @include('modules.error-field', ['fieldName' => 'due_date'])
-            </div>
+            <label class="col-form-label" for='due_date'>Due Date</label>
+            <input type='text' class="form-control" name='due_date' id='due_date' value='{{ old('due_date') }}'>
+            @include('modules.error-field', ['fieldName' => 'due_date'])
         </div>
 
-        @include('task.categoriesForCheckboxes')
+        <div class="form-group">
+            <label class="col-form-label" for='categories'>Categories</label>
+            @include('task.categoriesForCheckboxes')
+        </div>
 
-        <input type='submit' value='Add task' class='btn btn-primary btn-small'>
+        <div class="form-group clear">
+            <input type='submit' value='Add task' class='btn btn-primary btn-small'>
+        </div>
+        
     </form>
 
 @endsection

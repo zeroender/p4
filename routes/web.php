@@ -29,6 +29,9 @@ Route::put('/task/{id}', 'TaskController@update');
 # View all tasks
 Route::get('/task', 'TaskController@index');
 
+# View all tasks ordered by due_date
+Route::get('/taskBy/{value}', 'TaskController@indexBy');
+
 # View a task
 Route::get('/task/{id}', 'TaskController@show');
 
@@ -56,6 +59,9 @@ Route::get('/category/{id}', 'CategoryController@show');
 # Delete a category
 Route::get('/category/{id}/delete', 'CategoryController@delete');
 Route::delete('/category/{id}', 'CategoryController@destroy');
+
+
+Route::get('/category/{id}/tasks', 'CategoryController@showTasksForCategory');
 
 Route::get('/debug', function () {
 
