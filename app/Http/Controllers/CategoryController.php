@@ -29,7 +29,7 @@ class CategoryController extends Controller
      */
     public function showTasksForCategory($id)
     {
-        $category = Category::where('id', '=', $id)->first();
+        $category = Category::where('id', '=', $id)->with('tasks')->first();
 
         return view('task.index')->with([
             'tasks' => $category->tasks
