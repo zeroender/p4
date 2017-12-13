@@ -1,16 +1,12 @@
 @extends('layouts.master')
 
-@push('head')
-
-@endpush
-
 @section('title')
-    {{ $category->name }}
+    View Category {{ $category->name }}
 @endsection
 
 @section('content')
 
-    <h3>Viewing Category "{{ $category['name'] }}" </h3>
+    <h1>Viewing Category: {{ $category->name }} </h1>
 
     <div class='clear'></div>
 

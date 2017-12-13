@@ -6,7 +6,7 @@
 
 @section('content')
 
-    <h3>Add a category</h3>
+    <h1>Create a new category</h1>
 
     <form method='POST' action='/category'>
 

@@ -6,7 +6,7 @@
 
 @section('content')
 
-    <h1>Add a task</h1>
+    <h1>Create a new task</h1>
 
     <form method='POST' action='/task'>
 
@@ -50,11 +50,11 @@
         <div class="form-group clear">
             <input type='submit' value='Add task' class='btn btn-primary btn-small'>
         </div>
-        
+
     </form>
 
 @endsection
 
 @push('body')
-    <script>$( "#due_date" ).datepicker({ dateFormat: 'yy-mm-dd' });</script>
+    <script src="/js/datepicker.js"></script>
 @endpush

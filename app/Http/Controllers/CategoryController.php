@@ -67,7 +67,7 @@ class CategoryController extends Controller
         //TODO make sure save did not throw an error!
 
         //If no error:
-        return redirect('/category')->with('alert', 'New category '.$request->input('name').' added');
+        return redirect('/category/'.$category->id)->with('alert', 'New category '.$request->input('name').' added');
     }
 
     /**
@@ -126,7 +126,7 @@ class CategoryController extends Controller
         //TODO make sure save did not throw an error!
 
         //If no error:
-        return redirect('/category')->with('alert', 'category '.$request->input('name').' updated');
+        return redirect('/category/'.$id)->with('alert', 'category '.$request->input('name').' updated');
     }
 
     /**

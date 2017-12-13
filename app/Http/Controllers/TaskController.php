@@ -71,7 +71,6 @@ class TaskController extends Controller
         $task->name = $request->input('name');
         $task->description = $request->input('description');
         $task->due_date = $request->input('due_date', null);//or null
-        //$task->list_id = $request->input('list_id');//or null
         $task->status = $request->input('status');
         $task->save();
 
@@ -79,7 +78,7 @@ class TaskController extends Controller
         //TODO make sure save did not throw an error!
 
         //If no error:
-        return redirect('/task')->with('alert', 'New task '.$request->input('name').' added');
+        return redirect('/task/'.$task->id)->with('alert', 'Task '.$request->input('name').'created successfully');
     }
 
     /**
@@ -167,7 +166,7 @@ class TaskController extends Controller
         //TODO make sure save did not throw an error!
 
         //If no error:
-        return redirect('/task')->with('alert', 'Task '.$request->input('name').' updated');
+        return redirect('/task/'.$id)->with('alert', 'Task '.$request->input('name').' updated');
     }
 
 

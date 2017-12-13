@@ -6,9 +6,9 @@
 
 @section('content')
 
-    <h3>Delete Task</h3>
+    <h1>Delete Task: {{ $task->name }}</h1>
 
-    <h5>Do you really want to delete "{{ $task->name }}"?</h5>
+    <p>Do you really want to delete "{{ $task->name }}"?</p>
 
     <form method='POST' action='/task/{{ $task->id }}'>
 

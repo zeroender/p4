@@ -1,12 +1,12 @@
 @extends('layouts.master')
 
 @section('title')
-    Edit Task {{ $task->title }}
+    Edit Task {{ $task->name }}
 @endsection
 
 @section('content')
 
-    <h1>Edit Task {{ $task->title }} </h1>
+    <h1>Editing Task: {{ $task->name }} </h1>
 
     <form method='POST' action='/task/{{ $task->id }}'>
 
@@ -62,5 +62,5 @@
 @endsection
 
 @push('body')
-    <script>$( "#due_date" ).datepicker({ dateFormat: 'yy-mm-dd' });</script>
+    <script src="/js/datepicker.js"></script>
 @endpush

@@ -1,14 +1,14 @@
 @extends('layouts.master')
 
 @section('title')
-    Delete category {{ $category['name'] }}
+    Delete category {{ $category->name }}
 @endsection
 
 @section('content')
 
-    <h3>Delete Category "{{ $category['name'] }}" </h3>
+    <h1>Delete Category: {{ $category->name }}</h1>
 
-    <h5>Do you wish to delete "{{ $category['name'] }}"?</h5>
+    <p>Do you wish to delete "{{ $category->name }}"?</p>
     <p>This will not delete any associated tasks</p>
 
     <form method='POST' action='/category/{{ $category->id }}'>

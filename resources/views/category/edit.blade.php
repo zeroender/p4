@@ -1,12 +1,12 @@
 @extends('layouts.master')
 
 @section('title')
-    Edit Category {{ $category->title }}
+    Edit Category {{ $category->name }}
 @endsection
 
 @section('content')
 
-    <h3>Editing Category "{{ $category['name'] }}" </h3>
+    <h1>Editing Category: {{ $category->name }}</h1>
 
     <form method='POST' action='/category/{{ $category->id }}'>
 

@@ -1,16 +1,12 @@
 @extends('layouts.master')
 
-@push('head')
-
-@endpush
-
 @section('title')
-    {{ $task->name }}
+    View Task {{ $task->name }}
 @endsection
 
 @section('content')
 
-    <h1>View Task {{ $task->title }} </h1>
+    <h1>Viewing Task: {{ $task->name }}</h1>
 
     <div class='clear'></div>
 

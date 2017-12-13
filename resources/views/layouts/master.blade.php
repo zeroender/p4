@@ -9,7 +9,6 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css' rel='stylesheet'>
-    <!-- <link href="/css/p4.css" type='text/css' rel='stylesheet'>  -->
     <link href="/css/style.css" type='text/css' rel='stylesheet'>
     <link rel="stylesheet" href="/jquery-ui-1.12.1.custom/jquery-ui.min.css">
 
@@ -18,31 +17,24 @@
 </head>
 <body>
 
-    @if(session('alert'))
-        <div class='alert'>
-            {{ session('alert') }}
-        </div>
-    @endif
-
     <header>
-        <!--<a href='/'><img
-            src='/images/pen-calendar-to-do-checklist.jpg'
-            style='width:250px'
-            alt='To do checklist image'></a> -->
-
         @include('modules.nav')
     </header>
 
     <section id='main'>
         <div class='container-fluid'>
+            @if(session('alert'))
+                <div class='alert'>
+                    {{ session('alert') }}
+                </div>
+            @endif
         @yield('content')
         </div>
     </section>
 
     <footer>
-      <a href='https://github.com/zeroender/p4'><i class='fa fa-github'></i></a>&nbsp;
-      &copy; {{ date('Y') }}
-  </footer>
+
+    </footer>
 
     {{-- src for Jquery --}}
     <!-- <script src='//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script> -->
