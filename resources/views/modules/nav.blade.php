@@ -10,7 +10,7 @@
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCreate" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Create
         </a>
-        <div class="dropdown-menu" aria-labelledby="Tasks">
+        <div class="dropdown-menu" aria-labelledby="Create">
           @foreach($createNav as $link => $label)
             @if($link != 'SECTIONBREAK')
               <a class="dropdown-item" href='/{{ $link }}'>{{ $label }}</a>
@@ -40,7 +40,7 @@
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCategories" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Categories
         </a>
-        <div class="dropdown-menu" aria-labelledby="Tasks">
+        <div class="dropdown-menu" aria-labelledby="Categories">
           @foreach($categoryNav as $link => $label)
             @if($link == 'SECTIONBREAK')
               <div class="dropdown-divider"></div>
@@ -55,7 +55,7 @@
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownTasksByCategory" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Tasks by Category
         </a>
-        <div class="dropdown-menu" aria-labelledby="Tasks">
+        <div class="dropdown-menu" aria-labelledby="TasksByCategory">
           @foreach($taskByCategoryNav as $link => $label)
             @if($link == 'SECTIONBREAK')
               <div class="dropdown-divider"></div>
