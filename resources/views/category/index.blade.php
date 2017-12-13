@@ -34,7 +34,7 @@
         </td>
         <td>
             <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                    Select Action
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
