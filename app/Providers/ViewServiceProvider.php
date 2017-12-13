@@ -14,8 +14,7 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        # The * indicates this view composer will be available to all views
-        view()->composer(['modules.nav'], function ($view) {
+        view()->composer(['layouts.master'], function ($view) {
 
             $categories = Category::orderBy('name')->get();
 
