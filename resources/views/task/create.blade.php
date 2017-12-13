@@ -28,10 +28,10 @@
 
         <div class="form-group">
             <label class="col-form-label" for='status'>* Status</label>
-            <select class='form-control' name='status' id='status' value='{{ old('status') }}'>
-                <option>not started</option>
-                <option>in progress</option>
-                <option>completed</option>
+            <select class='form-control' name='status' id='status'>
+              <option value='not started' {{ old('status') == 'not started' ? 'selected' : ''}}>not started</option>
+              <option value='in progress' {{ old('status') == 'in progress'  ? 'selected' : ''}}>in progress</option>
+              <option value='completed' {{ old('status') == 'completed'  ? 'selected' : ''}}>completed</option>
             </select>
             @include('modules.error-field', ['fieldName' => 'status'])
         </div>
@@ -43,7 +43,7 @@
         </div>
 
         <div class="form-group">
-            <label class="col-form-label" for='categories[]'>Categories</label>
+            <label class="col-form-label" for='categories'>Categories</label>
             @include('task.categoriesForCheckboxes')
         </div>
 

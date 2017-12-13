@@ -12,22 +12,22 @@
 
     <div class="form-group">
         <label class="col-form-label" for='name'>Task Name</label>
-        <input type='text' class="form-control" disabled='true' value='{{ $task['name'] }}'>
+        <input type='text' class="form-control" disabled value='{{ $task['name'] }}'>
     </div>
 
     <div class="form-group">
         <label class="col-form-label" for='name'>Description</label>
-        <input type='text' class="form-control" disabled='true' value='{{ $task['description'] }}'>
+        <input type='text' class="form-control" disabled value='{{ $task['description'] }}'>
     </div>
 
     <div class="form-group">
         <label class="col-form-label" for='name'>Status</label>
-        <input type='text' class="form-control" disabled='true' value='{{ $task['status'] }}'>
+        <input type='text' class="form-control" disabled value='{{ $task['status'] }}'>
     </div>
 
     <div class="form-group">
         <label class="col-form-label" for='name'>Due Date</label>
-        <input type='text' class="form-control" disabled='true' value='{{ $task['due_date'] }}'>
+        <input type='text' class="form-control" disabled value='{{ $task['due_date'] }}'>
     </div>
 
     <div class="form-group">

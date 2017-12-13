@@ -3,7 +3,7 @@
         type='checkbox'
         value='{{ $id }}'
         name='categories[]'
-        disabled='true'
+        disabled
         {{ (isset($categoriesForThisTask) and in_array($name, $categoriesForThisTask)) ? 'CHECKED' : '' }}
     >
     {{ $name }} <br>
