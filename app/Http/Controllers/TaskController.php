@@ -95,7 +95,7 @@ class TaskController extends Controller
         //TODO make sure save did not throw an error!
 
         //If no error:
-        return redirect('/task/'.$task->id)->with('alert', 'Task '.$request->input('name').'created successfully');
+        return redirect('/task/'.$task->id)->with('alert', 'Task '.$request->input('name').' created successfully');
     }
 
     /**
