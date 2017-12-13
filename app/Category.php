@@ -11,9 +11,14 @@ class Category extends Model
         return $this->belongsToMany('App\Task')->withTimestamps();
     }
 
-    public static function getForCheckboxes()
+    public function user()
     {
-        $categories = Category::orderBy('name')->get();
+        return $this->belongsTo('App\User');
+    }
+
+    public static function getForCheckboxes($user)
+    {
+        $categories = $user->categories()->orderBy('name')->get();
 
         $categoriesForCheckboxes = [];
 
@@ -22,14 +27,5 @@ class Category extends Model
         }
 
         return $categoriesForCheckboxes;
-    }
-
-    public static function getTasksForCategory($id)
-    {
-        $category = Category::where('id', '=', $id);
-
-        foreach ($category->tasks as $task) {
-            dump($task->name);
-        }
     }
 }

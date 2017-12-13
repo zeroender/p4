@@ -27,7 +27,8 @@ class CategoriesTableSeeder extends Seeder
                 'created_at' => Carbon\Carbon::now()->subDays($count)->toDateTimeString(),
                 'updated_at' => Carbon\Carbon::now()->subDays($count)->toDateTimeString(),
                 'name' => $category[0],
-                'description' => $category[1]
+                'description' => $category[1],
+                'user_id' => 1
             ]);
             $count--;
         }

@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Http\Request;
 use Illuminate\Support\ServiceProvider;
 use App\Category;
+use Auth;
 
 class ViewServiceProvider extends ServiceProvider
 {
@@ -16,7 +17,11 @@ class ViewServiceProvider extends ServiceProvider
     {
         view()->composer(['layouts.master'], function ($view) {
 
-            $categories = Category::orderBy('name')->get();
+            $user = Auth::user();
+
+            if ($user) {
+                $categories = $user->categories()->orderBy('name')->get();
+            }
 
             $categoryNav = [
                 'category' => 'All Categories',
@@ -25,10 +30,20 @@ class ViewServiceProvider extends ServiceProvider
 
             $taskByCategoryNav = [];
 
-            foreach ($categories as $category) {
-                $categoryNav+= array('category/'.$category->id => $category->name);
-                $taskByCategoryNav+= array('category/'.$category->id.'/tasks' => $category->name);
+            if (isset($categories) and $categories->isNotEmpty()) {
+                $taskByCategoryNav = [];
+
+                foreach ($categories as $category) {
+                    $categoryNav+= array('category/'.$category->id => $category->name);
+                    $taskByCategoryNav+= array('category/'.$category->id.'/tasks' => $category->name);
+                }
+            } else {
+                $categoryNav+= array('category/create' => "You do not have any collections - click here to create one");
+                $taskByCategoryNav+= array('category/create' => "You do not have any collections -
+                  click here to create one");
+                $categories = [];
             }
+
 
             $createNav = [
                 'task/create' => 'Create a new task',
@@ -44,12 +59,19 @@ class ViewServiceProvider extends ServiceProvider
                 'taskBy/status' => 'View by Status'
             ];
 
+            $loginNav = [
+                'register' => 'Register',
+                'login' => 'Login',
+            ];
+
             $view->with([
                 'categories' => $categories,
                 'createNav' => $createNav,
                 'taskNav' => $taskNav,
                 'categoryNav' => $categoryNav,
-                'taskByCategoryNav' => $taskByCategoryNav
+                'taskByCategoryNav' => $taskByCategoryNav,
+                'user' => $user,
+                'loginNav' => $loginNav
             ]);
         });
     }

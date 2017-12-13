@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Task;
 use App\Category;
+use App\User;
+use Auth;
 
 class TaskController extends Controller
 {
@@ -15,7 +17,13 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::orderBy('name')->get();
+        $user = Auth::user();
+
+        if ($user) {
+            $tasks = $user->tasks()->orderBy('name')->get();
+        } else {
+            $tasks = [];
+        }
 
         return view('task.index')->with([
             'tasks' => $tasks
@@ -29,9 +37,15 @@ class TaskController extends Controller
      */
     public function indexBy($value)
     {
-        $tasks = Task::orderBy($value)->get();
+        $user = Auth::user();
 
-        $value = ' ordered by '.$value;
+        if ($user) {
+            $tasks = $user->tasks()->orderBy($value)->get();
+            $value = ' ordered by '.$value;
+        } else {
+            $tasks = [];
+            $value = "";
+        }
 
         return view('task.index')->with([
             'tasks' => $tasks,
@@ -46,7 +60,9 @@ class TaskController extends Controller
      */
     public function create()
     {
-        $categoriesForCheckboxes = Category::getForCheckboxes();
+        $user = Auth::user();
+
+        $categoriesForCheckboxes = Category::getForCheckboxes($user);
 
         return view('task.create')->with([
             'categoriesForCheckboxes' => $categoriesForCheckboxes
@@ -70,8 +86,9 @@ class TaskController extends Controller
         $task = new Task();
         $task->name = $request->input('name');
         $task->description = $request->input('description');
-        $task->due_date = $request->input('due_date', null);//or null
+        $task->due_date = $request->input('due_date', null);
         $task->status = $request->input('status');
+        $task->user_id = $request->user()->id;
         $task->save();
 
         $task->categories()->sync($request->input('categories'));
@@ -89,13 +106,17 @@ class TaskController extends Controller
      */
     public function show($id)
     {
-        $task = Task::find($id);
+        $user = Auth::user();
+
+        if ($user) {
+            $task = $user->tasks()->find($id);
+        }
 
         if (!$task) {
             return redirect('/task')->with('alert', 'Task not found');
         }
 
-        $categoriesForCheckboxes = Category::getForCheckboxes();
+        $categoriesForCheckboxes = Category::getForCheckboxes($user);
 
         $categoriesForThisTask = [];
         foreach ($task->categories as $category) {
@@ -117,13 +138,17 @@ class TaskController extends Controller
      */
     public function edit($id)
     {
-        $task = Task::find($id);
+        $user = Auth::user();
+
+        if ($user) {
+            $task = $user->tasks()->find($id);
+        }
 
         if (!$task) {
             return redirect('/task')->with('alert', 'Task not found');
         }
 
-        $categoriesForCheckboxes = Category::getForCheckboxes();
+        $categoriesForCheckboxes = Category::getForCheckboxes($user);
 
         $categoriesForThisTask = [];
         foreach ($task->categories as $category) {
@@ -158,8 +183,8 @@ class TaskController extends Controller
 
         $task->name = $request->input('name');
         $task->description = $request->input('description');
-        $task->due_date = $request->input('due_date', null);//or null
-        //$task->list_id = $request->input('list_id');//or null
+        $task->due_date = $request->input('due_date', null);
+
         $task->status = $request->input('status');
         $task->save();
 
@@ -178,7 +203,11 @@ class TaskController extends Controller
      */
     public function confirmDelete($id)
     {
-        $task = Task::find($id);
+        $user = Auth::user();
+
+        if ($user) {
+            $task = $user->tasks()->find($id);
+        }
 
         if (!$task) {
             return redirect('/task')->with('alert', 'Task not found');

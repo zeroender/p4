@@ -15,53 +15,56 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-/**
-* Task
-*/
-# Create a task
-Route::get('/task/create', 'TaskController@create');
-Route::post('/task', 'TaskController@store');
 
-# Edit a task
-Route::get('/task/{id}/edit', 'TaskController@edit');
-Route::put('/task/{id}', 'TaskController@update');
+Route::group(['middleware' => 'auth'], function () {
+    /**
+    * Task
+    */
+    # Create a task
+    Route::get('/task/create', 'TaskController@create');
+    Route::post('/task', 'TaskController@store');
 
-# View all tasks
-Route::get('/task', 'TaskController@index');
+    # Edit a task
+    Route::get('/task/{id}/edit', 'TaskController@edit');
+    Route::put('/task/{id}', 'TaskController@update');
 
-# View all tasks ordered by due_date
-Route::get('/taskBy/{value}', 'TaskController@indexBy');
+    # View all tasks
+    Route::get('/task', 'TaskController@index');
 
-# View a task
-Route::get('/task/{id}', 'TaskController@show');
+    # View all tasks ordered by due_date
+    Route::get('/taskBy/{value}', 'TaskController@indexBy');
 
-# Delete a task
-Route::get('/task/{id}/delete', 'TaskController@confirmDelete');
-Route::delete('/task/{id}', 'TaskController@delete');
+    # View a task
+    Route::get('/task/{id}', 'TaskController@show');
 
-/**
-* Category
-*/
-# Create a category
-Route::get('/category/create', 'CategoryController@create');
-Route::post('/category', 'CategoryController@store');
+    # Delete a task
+    Route::get('/task/{id}/delete', 'TaskController@confirmDelete');
+    Route::delete('/task/{id}', 'TaskController@delete');
 
-# Edit a category
-Route::get('/category/{id}/edit', 'CategoryController@edit');
-Route::put('/category/{id}', 'CategoryController@update');
+    /**
+    * Category
+    */
+    # Create a category
+    Route::get('/category/create', 'CategoryController@create');
+    Route::post('/category', 'CategoryController@store');
 
-# View all categories
-Route::get('/category', 'CategoryController@index');
+    # Edit a category
+    Route::get('/category/{id}/edit', 'CategoryController@edit');
+    Route::put('/category/{id}', 'CategoryController@update');
 
-# View a category
-Route::get('/category/{id}', 'CategoryController@show');
+    # View all categories
+    Route::get('/category', 'CategoryController@index');
 
-# Delete a category
-Route::get('/category/{id}/delete', 'CategoryController@delete');
-Route::delete('/category/{id}', 'CategoryController@destroy');
+    # View a category
+    Route::get('/category/{id}', 'CategoryController@show');
 
+    # Delete a category
+    Route::get('/category/{id}/delete', 'CategoryController@delete');
+    Route::delete('/category/{id}', 'CategoryController@destroy');
 
-Route::get('/category/{id}/tasks', 'CategoryController@showTasksForCategory');
+    #Show all the tasks for a given category
+    Route::get('/category/{id}/tasks', 'CategoryController@showTasksForCategory');
+});
 
 Route::get('/debug', function () {
 
@@ -89,3 +92,5 @@ Route::get('/debug', function () {
 
     dump($debug);
 });
+
+Auth::routes();

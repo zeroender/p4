@@ -27,7 +27,8 @@ class TasksTableSeeder extends Seeder
                 'name' => $task[0],
                 'description' => $task[1],
                 'due_date' => Carbon\Carbon::now()->subDays($count * 10)->toDateTimeString(),
-                'status' => $task[2]
+                'status' => $task[2],
+                'user_id' => 1
             ]);
             $count--;
         }

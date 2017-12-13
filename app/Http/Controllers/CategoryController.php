@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Task;
+use App\User;
+use Auth;
 
 class CategoryController extends Controller
 {
@@ -15,7 +17,13 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::orderBy('name')->get();
+        $user = Auth::user();
+
+        if ($user) {
+            $categories = $user->categories()->orderBy('name')->get();
+        } else {
+            $categories = [];
+        }
 
         return view('category.index')->with([
             'categories' => $categories
@@ -29,10 +37,17 @@ class CategoryController extends Controller
      */
     public function showTasksForCategory($id)
     {
-        $category = Category::where('id', '=', $id)->with('tasks')->first();
+        $user = Auth::user();
+
+        if ($user) {
+            $category = $user->categories()->where('id', '=', $id)->first();
+            $tasks = $category->tasks;
+        } else {
+            $tasks = [];
+        }
 
         return view('task.index')->with([
-            'tasks' => $category->tasks
+            'tasks' => $tasks
         ]);
     }
 
@@ -62,11 +77,9 @@ class CategoryController extends Controller
         $category = new category();
         $category->name = $request->input('name');
         $category->description = $request->input('description');
+        $category->user_id = $request->user()->id;
         $category->save();
 
-        //TODO make sure save did not throw an error!
-
-        //If no error:
         return redirect('/category/'.$category->id)->with('alert', 'New category '.$request->input('name').' added');
     }
 
@@ -78,7 +91,11 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        $category = category::find($id);
+        $user = Auth::user();
+
+        if ($user) {
+            $category = $user->categories()->find($id);
+        }
 
         if (!$category) {
             return redirect('/category')->with('alert', 'category not found');
@@ -95,7 +112,11 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $category = category::find($id);
+        $user = Auth::user();
+
+        if ($user) {
+            $category = $user->categories()->find($id);
+        }
 
         if (!$category) {
             return redirect('/category')->with('alert', 'Category not found');
@@ -123,9 +144,6 @@ class CategoryController extends Controller
         $category->description = $request->input('description');
         $category->save();
 
-        //TODO make sure save did not throw an error!
-
-        //If no error:
         return redirect('/category/'.$id)->with('alert', 'category '.$request->input('name').' updated');
     }
 
@@ -137,7 +155,11 @@ class CategoryController extends Controller
      */
     public function delete($id)
     {
-        $category = Category::find($id);
+        $user = Auth::user();
+
+        if ($user) {
+            $category = $user->categories()->find($id);
+        }
 
         if (!$category) {
             return redirect('/category')->with('alert', 'category not found');
