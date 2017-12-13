@@ -11,12 +11,12 @@
     <div class='clear'></div>
 
     <div class="form-group">
-        <label class="col-form-label" for='name'>Category Name</label>
+        <label class="col-form-label">Category Name</label>
         <input type='text' disabled class="form-control" name='name' id='name' value='{{ $category['name'] }}'>
     </div>
 
     <div class="form-group">
-        <label class="col-form-label" for='description'>Description</label>
+        <label class="col-form-label">Description</label>
         <input type='text' disabled class="form-control" name='description' id='description' value='{{ $category['description'] }}'>
         @include('modules.error-field', ['fieldName' => 'description'])
     </div>

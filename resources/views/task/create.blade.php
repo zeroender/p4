@@ -43,7 +43,7 @@
         </div>
 
         <div class="form-group">
-            <label class="col-form-label" for='categories'>Categories</label>
+            <label class="col-form-label">Categories</label>
             @include('task.categoriesForCheckboxes')
         </div>
 

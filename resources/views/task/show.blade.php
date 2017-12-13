@@ -11,27 +11,27 @@
     <div class='clear'></div>
 
     <div class="form-group">
-        <label class="col-form-label" for='name'>Task Name</label>
+        <label class="col-form-label">Task Name</label>
         <input type='text' class="form-control" disabled value='{{ $task['name'] }}'>
     </div>
 
     <div class="form-group">
-        <label class="col-form-label" for='name'>Description</label>
+        <label class="col-form-label">Description</label>
         <input type='text' class="form-control" disabled value='{{ $task['description'] }}'>
     </div>
 
     <div class="form-group">
-        <label class="col-form-label" for='name'>Status</label>
+        <label class="col-form-label">Status</label>
         <input type='text' class="form-control" disabled value='{{ $task['status'] }}'>
     </div>
 
     <div class="form-group">
-        <label class="col-form-label" for='name'>Due Date</label>
+        <label class="col-form-label">Due Date</label>
         <input type='text' class="form-control" disabled value='{{ $task['due_date'] }}'>
     </div>
 
     <div class="form-group">
-        <label class="col-form-label" for='categories'>Categories</label>
+        <label class="col-form-label">Categories</label>
         @include('task.categoriesForCheckboxesDisplay')
     </div>
 
