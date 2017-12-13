@@ -37,7 +37,7 @@
                 <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                    Select Action
                 </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <div class="dropdown-menu">
                     <a class="dropdown-item" href='/category/{{ $category['id'] }}'>View</a>
                     <a class="dropdown-item" href='/category/{{ $category['id'] }}/edit'>Edit</a>
                     <a class="dropdown-item" href='/category/{{ $category['id'] }}/delete'>Delete</a>
