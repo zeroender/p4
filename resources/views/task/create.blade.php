@@ -28,7 +28,7 @@
 
         <div class="form-group">
             <label class="col-form-label" for='status'>* Status</label>
-            <select type='dropdown' class="form-control" name='status' id='status' value='{{ old('status') }}'>
+            <select class='form-control' name='status' id='status' value='{{ old('status') }}'>
                 <option>not started</option>
                 <option>in progress</option>
                 <option>completed</option>
@@ -43,7 +43,7 @@
         </div>
 
         <div class="form-group">
-            <label class="col-form-label" for='categories'>Categories</label>
+            <label class="col-form-label" for='categories[]'>Categories</label>
             @include('task.categoriesForCheckboxes')
         </div>
 

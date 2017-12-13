@@ -30,7 +30,7 @@
 
         <div class="form-group">
             <label class="col-form-label" for='status'>* Status</label>
-            <select type='dropdown' class="form-control" name='status' id='status'>
+            <select class="form-control" name='status' id='status'>
                 <option value='not started' {{ (old('status') == 'not started' || ($task->status == 'not started' && old('status')==null)) ? 'selected' : ''}}>not started</option>
                 <option value='in progress' {{ (old('status') == 'in progress' || ($task->status == 'in progress' && old('status')==null)) ? 'selected' : ''}}>in progress</option>
                 <option value='completed' {{ (old('status') == 'completed' || ($task->status == 'completed' && old('status')==null)) ? 'selected' : ''}}>completed</option>
@@ -45,7 +45,7 @@
         </div>
 
         <div class="form-group">
-            <label class="col-form-label" for='categories'>Categories</label>
+            <label class="col-form-label" for='categories[]'>Categories</label>
             @include('task.categoriesForCheckboxes')
         </div>
 
