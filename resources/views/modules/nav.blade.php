@@ -10,7 +10,7 @@
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCreate" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Create
         </a>
-        <div class="dropdown-menu" aria-labelledby="Create">
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownCreate">
           @foreach($createNav as $link => $label)
             @if($link != 'SECTIONBREAK')
               <a class="dropdown-item" href='/{{ $link }}'>{{ $label }}</a>
@@ -25,7 +25,7 @@
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownTasks" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Tasks
         </a>
-        <div class="dropdown-menu" aria-labelledby="Tasks">
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownTasks">
           @foreach($taskNav as $link => $label)
             @if($link != 'SECTIONBREAK')
               <a class="dropdown-item" href='/{{ $link }}'>{{ $label }}</a>
@@ -40,7 +40,7 @@
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCategories" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Categories
         </a>
-        <div class="dropdown-menu" aria-labelledby="Categories">
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownCategories">
           @foreach($categoryNav as $link => $label)
             @if($link == 'SECTIONBREAK')
               <div class="dropdown-divider"></div>
@@ -55,7 +55,7 @@
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownTasksByCategory" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Tasks by Category
         </a>
-        <div class="dropdown-menu" aria-labelledby="TasksByCategory">
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownTasksByCategory">
           @foreach($taskByCategoryNav as $link => $label)
             @if($link == 'SECTIONBREAK')
               <div class="dropdown-divider"></div>
